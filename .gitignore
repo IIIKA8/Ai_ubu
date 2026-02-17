@@ -1,0 +1,5 @@
+.env
+.webui_secret_key
+*.db
+.venv
+__pycache__
