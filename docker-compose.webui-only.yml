@@ -1,0 +1,25 @@
+# Только Open WebUI — подключается к Ollama на хосте (не в Docker).
+# Используйте, если Ollama уже установлена на сервере и модели уже скачаны.
+#
+# Запуск:
+#   docker compose -f docker-compose.webui-only.yml up -d
+# Остановка:
+#   docker compose -f docker-compose.webui-only.yml down
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-}
+    volumes:
+      - open-webui:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  open-webui: {}
