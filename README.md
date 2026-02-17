@@ -34,4 +34,4 @@ docker compose down
 
 ## Продакшен (сервер)
 
-Скопируйте `.env.example` в `.env`, задайте `WEBUI_SECRET_KEY`. При необходимости закройте порты фаерволом и поставьте HTTPS (Nginx/Caddy) перед Open WebUI.
+Создайте `.env`, задайте `WEBUI_SECRET_KEY` либо например, openssl rand -hex 32, если не создался автоматически. При необходимости закройте порты фаерволом и поставьте HTTPS (Nginx/Caddy) перед Open WebUI.
